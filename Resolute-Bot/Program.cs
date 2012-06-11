@@ -13,7 +13,7 @@ namespace Resolute.Bot {
 
             bool offlineMode = false;
             String username = "S1NZ";
-            String address = "localhost";
+            String address = "mcsteamed.net";
             int port = 25565;
 
             TcpClient clientsocket = new TcpClient(address, port);

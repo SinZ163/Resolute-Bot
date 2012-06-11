@@ -20,7 +20,7 @@ namespace Resolute.Bot.Packets {
             this.username = username;
             write();
         }
-        private int version;
+        private int version = 29;
         private String username;
 
         public int EID;
