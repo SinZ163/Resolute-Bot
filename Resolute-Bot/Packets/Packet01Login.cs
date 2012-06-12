@@ -42,6 +42,7 @@ namespace Resolute.Bot.Packets {
             socket.writeByte(1);
 
             socket.writeInt(version);
+            Console.Out.WriteLine("Int done");
             socket.writeString(username);
             socket.writeString("");
             socket.writeInt(0);

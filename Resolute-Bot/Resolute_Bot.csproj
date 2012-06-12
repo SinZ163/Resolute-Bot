@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Packets\Packet255Kick.cs" />
     <Compile Include="Packets\Packet02Handshake.cs" />
     <Compile Include="Packets\Packet01Login.cs" />
     <Compile Include="Program.cs" />
