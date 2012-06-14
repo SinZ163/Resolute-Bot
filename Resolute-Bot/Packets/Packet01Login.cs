@@ -28,6 +28,7 @@ namespace Resolute.Bot.Packets {
         public int mode;
         public int atmosphere;
         public SByte difficulty;
+        public byte maxPlayers;
 
         public void read() {
             EID = socket.readInt();
@@ -36,13 +37,14 @@ namespace Resolute.Bot.Packets {
             mode = socket.readInt();
             atmosphere = socket.readInt();
             difficulty = socket.readByte();
+            socket.readByte();
+            maxPlayers = (byte) socket.readByte();
         }
 
         public void write() {
             socket.writeByte(1);
 
             socket.writeInt(version);
-            Console.Out.WriteLine("Int done");
             socket.writeString(username);
             socket.writeString("");
             socket.writeInt(0);

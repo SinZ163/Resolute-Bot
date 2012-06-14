@@ -28,6 +28,7 @@ namespace Resolute.Bot {
             Console.Out.WriteLine("Send handshake");
 
             loop();
+            Console.In.ReadLine();
         }
 
         static void Main(string[] args) {
@@ -47,12 +48,17 @@ namespace Resolute.Bot {
                 byte packetID = (byte) socket.readByte();
                 Console.WriteLine("Received packet: " + packetID);
 
-                if (packetID == 1) {
-                    Packet01Login login1 = new Packet01Login(socket);
+                if (packetID == 0) {
+                    Packet00KeepAlive keepAlive = new Packet00KeepAlive(socket);
+                    keepAlive.write();
+                }
+                else if (packetID == 1) {
+                    Packet01Login login = new Packet01Login(socket);
+                    Console.Out.WriteLine("Login: " + login.EID);
                 }
                 else if (packetID == 2) {
-                    Packet02Handshake handshake1 = new Packet02Handshake(socket);
-                    if (handshake1.hash == "-") {
+                    Packet02Handshake handshake = new Packet02Handshake(socket);
+                    if (handshake.hash == "-") {
                         Console.WriteLine("Offline mode enabled by server!");
                         offlineMode = true;
                     }
@@ -62,6 +68,45 @@ namespace Resolute.Bot {
 
                     Packet01Login login = new Packet01Login(socket, 29, username);
                     Console.Out.WriteLine("Send Login");
+                }
+                else if (packetID == 3) {
+                    Packet03Chat chat = new Packet03Chat(socket);
+                    Console.WriteLine("Chat: " + chat.message);
+                }
+                else if (packetID == 4) {
+                    Packet04Time time = new Packet04Time(socket);
+                }
+                else if (packetID == 5) {
+                    Packet05EntityEquipment entityEquipment = new Packet05EntityEquipment(socket);
+                }
+                else if (packetID == 6) {
+                    Packet06SpawnPosition position = new Packet06SpawnPosition(socket);
+                }
+                else if (packetID == 21) {
+                    Packet21DroppedItem droppedItem = new Packet21DroppedItem(socket);
+                }
+                else if (packetID == 24) {
+                    Packet24MobSpawn mobSpawn = new Packet24MobSpawn(socket);
+                }
+                else if (packetID == 25) {
+                    Packet25Painting painting = new Packet25Painting(socket);
+                    Console.Out.WriteLine("Painting: " + painting.title + " at coords: (X" + painting.X + ", Y" + painting.Y + ", Z" + painting.Z + ").");
+                }
+                else if (packetID == 28) {
+                    Packet28Velocity velocity = new Packet28Velocity(socket);
+                }
+                else if (packetID == 50) {
+                    Packet50PreChunk preChunk = new Packet50PreChunk(socket);
+                    Console.Out.WriteLine("Chunk: coords: (X" + preChunk.X + ", Z" + preChunk.Z + ")");
+                }
+                else if (packetID == 70) {
+                    Packet70GameState gameState = new Packet70GameState(socket);
+                }
+                else if (packetID == 201) {
+                    Packet201PlayerList playerList = new Packet201PlayerList(socket);
+                }
+                else if (packetID == 202) {
+                    Packet202Abilities abilities = new Packet202Abilities(socket);
                 }
                 else if (packetID == 255) {
                     Packet255Kick kick = new Packet255Kick(socket);
