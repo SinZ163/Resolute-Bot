@@ -13,14 +13,16 @@ namespace Resolute.Bot.Objects {
         private int type;
         private int index;
         private object value;
+        public Dictionary<int, object> metadata;
 
         public Metadata(SinZSockets socket) {
+            Console.Out.WriteLine("Metadata initialised");
             this.socket = socket;
-            read();
         }
 
         public void read() {
-            Dictionary<int, object> metadata = new Dictionary<int, object>();
+            Console.Out.WriteLine("Metadata read mode activated");
+            metadata = new Dictionary<int, object>();
             metadataInfo = (byte) socket.readByte();
             while (metadataInfo != 127) {
                 type = metadataInfo >> 5;

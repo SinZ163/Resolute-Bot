@@ -34,6 +34,7 @@ namespace Resolute.Bot.Packets {
             pitch = socket.readByte();
             headYaw = socket.readByte();
             metadata = new Metadata(socket);
+            metadata.read();
         }
     }
 }

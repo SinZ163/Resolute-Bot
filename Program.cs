@@ -82,6 +82,9 @@ namespace Resolute.Bot {
                 else if (packetID == 6) {
                     Packet06SpawnPosition position = new Packet06SpawnPosition(socket);
                 }
+                else if (packetID == 13) {
+                    Packet13PlayerPosition_Look posLook = new Packet13PlayerPosition_Look(socket);
+                }
                 else if (packetID == 21) {
                     Packet21DroppedItem droppedItem = new Packet21DroppedItem(socket);
                 }
@@ -95,12 +98,23 @@ namespace Resolute.Bot {
                 else if (packetID == 28) {
                     Packet28Velocity velocity = new Packet28Velocity(socket);
                 }
+                else if (packetID == 33) {
+                    Packet33EntityLookandMove entityLookMove = new Packet33EntityLookandMove(socket);
+                }
+                else if (packetID == 40) {
+                    Packet40Metadata metadata = new Packet40Metadata(socket);
+                }
                 else if (packetID == 50) {
                     Packet50PreChunk preChunk = new Packet50PreChunk(socket);
-                    Console.Out.WriteLine("Chunk: coords: (X" + preChunk.X + ", Z" + preChunk.Z + ")");
                 }
                 else if (packetID == 70) {
                     Packet70GameState gameState = new Packet70GameState(socket);
+                }
+                else if (packetID == 103) {
+                    Packet103Slot slot = new Packet103Slot(socket);
+                }
+                else if (packetID == 104) {
+                    Packet104WindowItems windowItems = new Packet104WindowItems(socket);
                 }
                 else if (packetID == 201) {
                     Packet201PlayerList playerList = new Packet201PlayerList(socket);
