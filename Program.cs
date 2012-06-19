@@ -98,8 +98,20 @@ namespace Resolute.Bot {
                 else if (packetID == 28) {
                     Packet28Velocity velocity = new Packet28Velocity(socket);
                 }
+                else if (packetID == 31) {
+                    Packet31EntityMove entityMove = new Packet31EntityMove(socket);
+                }
+                else if (packetID == 32) {
+                    Packet32EntityLook entityLook = new Packet32EntityLook(socket);
+                }
                 else if (packetID == 33) {
                     Packet33EntityLookandMove entityLookMove = new Packet33EntityLookandMove(socket);
+                }
+                else if (packetID == 35) {
+                    Packet35EntityHeadLook entityHeadLook = new Packet35EntityHeadLook(socket);
+                }
+                else if (packetID == 38) {
+                    Packet38Status stauts = new Packet38Status(socket);
                 }
                 else if (packetID == 40) {
                     Packet40Metadata metadata = new Packet40Metadata(socket);

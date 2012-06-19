@@ -3,25 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SinZationalSockets;
-using Resolute.Bot.Objects;
 
 namespace Resolute.Bot.Packets {
-    class Packet40Metadata {
+    class Packet35EntityHeadLook {
 
         private SinZSockets socket;
         public int EID;
-        public Metadata metadata;
+        public sbyte headYaw;
 
-        public Packet40Metadata(SinZSockets socket) {
+        public Packet35EntityHeadLook(SinZSockets socket) {
             this.socket = socket;
             read();
         }
 
+
         public void read() {
             EID = socket.readInt();
-            Console.Out.WriteLine("INB4 Metadata");
-            metadata = new Metadata(socket);
-            metadata.read();
+            headYaw = socket.readByte();
         }
     }
 }
