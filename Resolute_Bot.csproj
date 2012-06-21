@@ -15,7 +15,7 @@
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -32,6 +32,10 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -56,22 +60,28 @@
     <Compile Include="Packets\Packet201PlayerList.cs" />
     <Compile Include="Packets\Packet202Abilities.cs" />
     <Compile Include="Packets\Packet21DroppedItem.cs" />
+    <Compile Include="Packets\Packet23VehicleSpawn.cs" />
     <Compile Include="Packets\Packet24MobSpawn.cs" />
     <Compile Include="Packets\Packet255Kick.cs" />
     <Compile Include="Packets\Packet02Handshake.cs" />
     <Compile Include="Packets\Packet01Login.cs" />
     <Compile Include="Packets\Packet25Painting.cs" />
     <Compile Include="Packets\Packet28Velocity.cs" />
+    <Compile Include="Packets\Packet29EntityDeath.cs" />
     <Compile Include="Packets\Packet31EntityMove.cs" />
     <Compile Include="Packets\Packet32EntityLook.cs" />
     <Compile Include="Packets\Packet33EntityLookandMove.cs" />
+    <Compile Include="Packets\Packet34EntityTeleport.cs" />
     <Compile Include="Packets\Packet35EntityHeadLook.cs" />
     <Compile Include="Packets\Packet38Status.cs" />
     <Compile Include="Packets\Packet40Metadata.cs" />
     <Compile Include="Packets\Packet50PreChunk.cs" />
+    <Compile Include="Packets\Packet54TileEntity.cs" />
+    <Compile Include="Packets\Packet61SoundEffect.cs" />
     <Compile Include="Packets\Packet70GameState.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SocketThread.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Visual Studio 2010\Projects\ClassLibrary1\ClassLibrary1\SinZationalSockets.csproj">

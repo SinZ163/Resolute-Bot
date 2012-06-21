@@ -3,24 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SinZationalSockets;
-using Resolute.Bot.Objects;
 
 namespace Resolute.Bot.Packets {
-    class Packet40Metadata {
+    class Packet61SoundEffect {
 
         private SinZSockets socket;
         public int EID;
-        public Metadata metadata;
+        public int X;
+        public sbyte Y;
+        public int Z;
+        public int data;
 
-        public Packet40Metadata(SinZSockets socket) {
+        public Packet61SoundEffect(SinZSockets socket) {
             this.socket = socket;
             read();
         }
 
         public void read() {
             EID = socket.readInt();
-            metadata = new Metadata(socket);
-            metadata.read();
+            X = socket.readInt();
+            Y = socket.readByte();
+            Z = socket.readInt();
+            data = socket.readInt();
         }
     }
 }
